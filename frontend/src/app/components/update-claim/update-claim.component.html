@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update claim</title>
+</head>
+<body>
+ 
+    <div class="my-5">
+      <div class="mx-auto w-25 " style="max-width:100%;">
+        <h2 class="text-center mb-3">Update claim</h2>
+        <form  [formGroup]="form" (ngSubmit)="submit()" >
+
+              
+          <div class="row">
+            <div class="col-md-12 form-group mb-3">
+              <label for="cateogry" class="form-label">Claim status</label>
+              <select id="cateogry" type="text"  formControlName="claim_Status" name="claim_Status" class="form-control" >
+                <option value="open">Open</option>
+                <option value="closed">Closed</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12 form-group mb-3">
+              <label for="surveyor_Id" class="form-label">Surveyor ID</label>
+              <input id="surveyor_Id" type="number" name="surveyor_Id" formControlName="surveyor_Id" class="form-control" placeholder="Enter Serveyor ID"  required>
+              <div *ngIf="form.controls['surveyor_Id']?.invalid && (form.controls['surveyor_Id']?.dirty || form.controls['surveyor_Id']?.touched)">
+                <div *ngIf="form.controls['surveyor_Id']?.errors?.['required']" class="text-danger">This field is required.</div>
+              </div>
+            </div>
+          </div> 
+
+
+          <div class="row">
+            <div class="col-md-12 form-group mb-3">
+              <label for="cateogry" class="form-label">Approve Funds</label>
+              <select id="cateogry" type="text"  formControlName="insurance_Company_Approval" name="insurance_Company_Approval" class="form-control"  >    
+                <option value=true selected>Approve</option>
+                <option value>Not approved</option>
+              </select>
+            </div>
+          </div>
+      
+         
+          <div class="row">
+            <div class="col-md-12 form-group">
+              <button [disabled]="!form.valid" class="btn btn-primary w-100" type="submit" value="Submit">Update</button>
+            </div>
+          </div>
+
+          <div>
+            
+          </div>
+        </form>
+  
+      </div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,12 @@
+.select-wrapper {
+    position: inherit;
+  }
+
+  select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-right: 20px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 5"><path fill="currentColor" d="M.6 0l3.7 4L8 0z"/></svg>') no-repeat center right;
+    background-size: 12px;
+  }

@@ -1,0 +1,15 @@
+.container {
+    margin: 100px 100px 0px 130px; 
+  }
+  .back
+  {
+    background-image: url("https://whatfix.com/blog/wp-content/uploads/2022/01/claims-management-software.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #fff;
+    margin-top: -8.9%;
+    margin-left: -2%;
+    margin-right: -2%;
+    height: 650px;
+    width: 100%;
+  }

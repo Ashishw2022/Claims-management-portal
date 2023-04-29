@@ -1,0 +1,53 @@
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="https://pnclogosofficial.s3.us-west-2.amazonaws.com/2020/10/09140729/insurance-logos-07-scaled.jpg" alt="Logo" style="width: 100px;height: 100px;">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" href="#">Claim</a>
+            <ul class="dropdown-menu dropdown-menu-start" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="viewClaim">View Claim</a></li>
+                <li><a class="dropdown-item" href="release">Release Fee</a></li>
+
+            </ul>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" href="#">Surveyor</a>
+            <ul class="dropdown-menu dropdown-menu-start" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="addSurvey">Add new Survey</a></li>
+                <li><a class="dropdown-item" href="viewSurvey">View Survey</a></li>
+            </ul>
+        </li>
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Insured</a>
+          <ul class="dropdown-menu dropdown-menu-start" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" routerLink="addClaim">Add Claim</a></li>
+            <li><a class="dropdown-item" routerLink="updateclaim">Update Claim</a></li>
+          </ul>
+        </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">IRDA</a>
+            <ul class="dropdown-menu dropdown-menu-start" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" routerLink="irda">IRDA</a></li>
+              <li><a class="dropdown-item" routerLink="showreports">Display Status</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+</nav>
+<br>
+
+  
+  <router-outlet></router-outlet>
+  

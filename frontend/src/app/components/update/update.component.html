@@ -1,0 +1,30 @@
+'<h1> Claim List</h1><br>
+<table class="table" >
+    <thead>
+      <tr>
+        <th scope="col">ClaimID</th>
+        <th scope="col">Date Of Accident</th>
+        <th scope="col">Status</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Operation</th>
+      </tr>
+    </thead>
+    <tbody >
+        <tr *ngFor="let category of data">
+
+        <td >{{category.claim_Id}}</td>
+        <td >{{category.date_Of_Accident | date: 'dd/MM/yyyy'}}</td>
+        <td *ngIf="category.insurance_Company_Approval==true && category.claim_Status==='open'">Approved</td>
+        <td *ngIf="category.insurance_Company_Approval==false && category.claim_Status==='open'">Not Approved</td>
+        <td *ngIf="category.insurance_Company_Approval==true && category.claim_Status==='closed'">Closed</td>
+        <td>{{category.amount_ApprovedBy_Surveyor}}</td>
+        <td *ngIf="category.insurance_Company_Approval==true && category.claim_Status==='closed' && category.with_Draw_Claim==false">Accepted</td>
+        <td *ngIf="category.insurance_Company_Approval==true && category.with_Draw_Claim==true">Witdrawn</td>
+        <button *ngIf="category.claim_Status==='open'" [disabled]="(!category.insurance_Company_Approval || isAccepted==true)" style="color: black;margin-top:20px;margin-bottom: 20px;" type="button" class="btn btn-success"
+        (click)="acceptAmount(category.claim_Id) " >Accept</button>&nbsp;&nbsp;
+        <button *ngIf="category.claim_Status==='open'" [disabled]="(!category.insurance_Company_Approval || isWithdrwan==true)" style="color: black;margin-top:20px;margin-bottom: 20px;" type="button" class="btn btn-warning"
+        (click)="withdraw(category.claim_Id)">Withdraw</button>&nbsp;&nbsp;
+
+      </tr>
+    </tbody>
+  </table>

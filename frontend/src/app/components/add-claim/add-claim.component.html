@@ -1,0 +1,64 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Claim</title>
+</head>
+<body>
+   
+    <div class="my-5">
+      <div class="mx-auto w-25 " style="max-width:100%;">
+        <h2 class="text-center mb-3">Add New claims</h2>
+        <form [formGroup]="form" (ngSubmit)="submit()">
+              
+          <div class="row">
+            <div class="col-md-12 form-group mb-3">
+              <label for="policy_No" class="form-label">Policy Number</label>
+              <input id="policy_No"  formControlName="policy_No" type="text" name="policy_No" class="form-control" placeholder="EX:AM98756" minlength="7" maxlength="7" required>
+              <div *ngIf="form.controls['policy_No'].invalid && (form.controls['policy_No'].dirty || form.controls['policy_No'].touched)">
+                <div *ngIf="form.controls['policy_No']?.errors?.['required']" class="text-danger">This field is required.</div>
+                <div *ngIf="form.controls['policy_No'].errors?.['min']" class="text-danger">This field requires a minimum of 7 Characters.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12 form-group mb-3">
+              <label for="estimated_Loss" class="form-label">Enter estimated Loss</label>
+              <input id="estimated_Loss"  formControlName="estimated_Loss" type="number" name="estimated_Loss" class="form-control" placeholder="EX:9456" required>
+              <div *ngIf="form.controls['estimated_Loss'].invalid && (form.controls['estimated_Loss'].dirty || form.controls['estimated_Loss'].touched)">
+                <div *ngIf="form.controls['estimated_Loss']?.errors?.['required']" class="text-danger">This field is required.</div>
+                <div *ngIf="form.controls['estimated_Loss'].errors?.['min']" class="text-danger">This field requires a minimum of 4 digits.</div>
+              </div>
+            </div>
+          </div>
+            
+          
+          <div class="row">
+            <div class="col-md-12 form-group mb-3">
+              <label for="date_Of_Accident" class="form-label">Accident Date</label>
+              <input id="date_Of_Accident" type="date" name="date_Of_Accident" formControlName="date_Of_Accident" class="form-control" placeholder="Select a date" required>
+              <div *ngIf="form.controls['date_Of_Accident']?.invalid && (form.controls['date_Of_Accident']?.dirty || form.controls['date_Of_Accident']?.touched)">
+                <div *ngIf="form.controls['date_Of_Accident']?.errors?.['required']" class="text-danger">This field is required.</div>
+              </div>
+            </div>
+          </div>
+          
+         
+         
+         
+          <div class="row">
+            <div class="col-md-12 form-group">
+              <input [disabled]="!form.valid" class="btn btn-primary w-100" type="submit" value="Submit">
+            </div>
+          </div>
+
+          <div>
+            
+          </div>
+        </form>
+      </div>
+    </div>
+</body>
+</html>
