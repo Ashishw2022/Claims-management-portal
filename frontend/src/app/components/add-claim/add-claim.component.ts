@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AppService } from 'src/app/app.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-claim',
@@ -37,8 +38,27 @@ constructor(private service: AppService, private router: Router,private http: Ht
         window.location.reload();
       }, 100);
     })
-    this.router.navigate(['/']);
-    alert('Claim added successfully')
+    this.router.navigate(['/viewClaim']);
+    Swal.fire({
+      icon: 'success',
+      title: `hurray`,
+      text: 'Claim added successfully',
+      showConfirmButton: true,
+    });
+    
   }
   
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -90,13 +90,13 @@ export class UpdateClaimComponent implements OnInit{
     this.service.updateClaim(this.claim?.claim_Id, this.data).subscribe(data => {
        //console.log(data)
       console.log(data)
-      // setTimeout(()=>{
-      //   window.location.reload();
-      // }, 100);
+      setTimeout(()=>{
+        window.location.reload();
+      }, 100);
     })
 
   })
-    this.router.navigate(['/viewClaim']);
+    this.router.navigate(['/']);
     // alert('details Updated successfully')
   }
 

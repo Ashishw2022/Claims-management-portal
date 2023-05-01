@@ -5,15 +5,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.web.bind.annotation.CrossOrigin;
-@CrossOrigin()
-@SpringBootApplication
-public class SurveyorApplication extends SpringBootServletInitializer  {
 
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Info;
+@SpringBootApplication
+@OpenAPIDefinition(info = @Info(title = "Surveyor Module", description = "This is Surveyor Module"))
+public class SurveyorApplication   {
+	
 	public static void main(String[] args) {
 		SpringApplication.run(SurveyorApplication.class, args);
 	}
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-		return builder.sources(SurveyorApplication.class);
-	}
+
 }

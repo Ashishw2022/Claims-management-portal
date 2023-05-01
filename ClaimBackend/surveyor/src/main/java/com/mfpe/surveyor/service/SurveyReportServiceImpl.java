@@ -5,18 +5,24 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.mfpe.surveyor.dto.SurveyDto;
 import com.mfpe.surveyor.exception.SurveyReportNotFoundException;
 import com.mfpe.surveyor.model.SurveyReport;
+import com.mfpe.surveyor.model.UserInfo;
 import com.mfpe.surveyor.repository.SurveyReportRepository;
+import com.mfpe.surveyor.repository.UserInfoRepository;
 
 @Service
 public class SurveyReportServiceImpl implements SurveyReportService {
-
+	@Autowired
+    private PasswordEncoder passwordEncoder;
 	@Autowired
 	private SurveyReportRepository surveyReportRepository;
+	@Autowired
+	private UserInfoRepository repo;
 	private static final Logger LOGGER = LoggerFactory.getLogger(SurveyReportServiceImpl.class);
 
 	@Override
@@ -105,4 +111,9 @@ public class SurveyReportServiceImpl implements SurveyReportService {
 		surveyDto.setTotalAmount(surveyReport.getTotalAmount());
 		return surveyDto;
 	}
+	 public String addUser(UserInfo userInfo) {
+	        userInfo.setPassword(passwordEncoder.encode(userInfo.getPassword()));
+	        repo.save(userInfo);
+	        return "user added to system ";
+	    }
 }

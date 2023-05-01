@@ -10,6 +10,7 @@ import { IrdaComponent } from './components/irda/irda.component';
 import { ShowReportsComponent } from './components/show-reports/show-reports.component';
 import { HomeComponent } from './components/home/home.component';
 import { UpdateComponent } from './components/update/update.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
   { path: 'addSurvey', component: AddSurveyComponent },
@@ -21,6 +22,8 @@ const routes: Routes = [
   {path:'irda',component:IrdaComponent },
   {path:'showreports',component:ShowReportsComponent},
   {path:'updateclaim',component:UpdateComponent},
+  {path:'login',component:LoginComponent},
+
   {path:'',component:HomeComponent}
 
 ];
