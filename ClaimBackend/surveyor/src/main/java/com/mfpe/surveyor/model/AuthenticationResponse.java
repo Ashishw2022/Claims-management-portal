@@ -1,7 +1,5 @@
 package com.mfpe.surveyor.model;
 
-
-
 public class AuthenticationResponse {
 
 	private final String jwt;
@@ -14,5 +12,5 @@ public class AuthenticationResponse {
 		super();
 		this.jwt = jwt;
 	}
-	
+
 }

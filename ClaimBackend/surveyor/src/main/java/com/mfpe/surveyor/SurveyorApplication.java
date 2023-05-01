@@ -8,10 +8,11 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Info;
+
 @SpringBootApplication
-@OpenAPIDefinition(info = @Info(title = "Surveyor Module", description = "This is Surveyor Module"))
-public class SurveyorApplication   {
-	
+@OpenAPIDefinition(info = @Info(title = "Surveyor APIS", description = "This is Surveyor Module"))
+public class SurveyorApplication {
+
 	public static void main(String[] args) {
 		SpringApplication.run(SurveyorApplication.class, args);
 	}

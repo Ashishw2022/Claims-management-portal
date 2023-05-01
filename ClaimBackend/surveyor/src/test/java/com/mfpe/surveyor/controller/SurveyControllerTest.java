@@ -1,6 +1,5 @@
 package com.mfpe.surveyor.controller;
 
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.ArgumentMatchers.any;
@@ -19,20 +18,21 @@ import com.mfpe.surveyor.dto.SurveyDto;
 import com.mfpe.surveyor.exception.SurveyReportNotFoundException;
 import com.mfpe.surveyor.model.SurveyReport;
 import com.mfpe.surveyor.service.SurveyReportService;
+
 @SpringBootTest
 @RunWith(MockitoJUnitRunner.class)
- class SurveyControllerTest {
+class SurveyControllerTest {
 
-    @Mock
-    private SurveyReportService surveyReportService;
+	@Mock
+	private SurveyReportService surveyReportService;
 
-    @InjectMocks
-    private SurveyController surveyController;
+	@InjectMocks
+	private SurveyController surveyController;
 
-    @Test
-    void testAddSurvey() throws SurveyReportNotFoundException {
-        // Given
-    	SurveyDto surveyReportDto = new SurveyDto();
+	@Test
+	void testAddSurvey() throws SurveyReportNotFoundException {
+		// Given
+		SurveyDto surveyReportDto = new SurveyDto();
 		surveyReportDto.setClaimId("CL1235050");
 		surveyReportDto.setPolicyNo("PL1234");
 		surveyReportDto.setPartsCost(5000);
@@ -40,7 +40,7 @@ import com.mfpe.surveyor.service.SurveyReportService;
 		surveyReportDto.setPolicyClass(1);
 		surveyReportDto.setLabourCharges(1000);
 		surveyReportDto.setTotalAmount(8000);
-		
+
 		SurveyReport surveyReport = new SurveyReport();
 		surveyReport.setClaimId("CL1235050");
 		surveyReport.setPolicyNo("PL1234");
@@ -49,57 +49,53 @@ import com.mfpe.surveyor.service.SurveyReportService;
 		surveyReport.setPolicyClass(1);
 		surveyReport.setLabourCharges(1000);
 		surveyReport.setTotalAmount(8000);
-    	
 
-        
-        
-        // When
-        when(surveyReportService.addSurvey(any(SurveyDto.class))).thenReturn(surveyReportDto);
-        ResponseEntity<SurveyDto> response = surveyController.addSurvey(surveyReportDto);
+		// When
+		when(surveyReportService.addSurvey(any(SurveyDto.class))).thenReturn(surveyReportDto);
+		ResponseEntity<SurveyDto> response = surveyController.addSurvey(surveyReportDto);
 
-        // Then
-        assertEquals(HttpStatus.CREATED, response.getStatusCode());
-        assertEquals(surveyReportDto, response.getBody());
-    }
+		// Then
+		assertEquals(HttpStatus.CREATED, response.getStatusCode());
+		assertEquals(surveyReportDto, response.getBody());
+	}
 
+	@Test
+	void testGetSurvey() throws SurveyReportNotFoundException {
+		// Given
+		SurveyDto surveyReportDto = new SurveyDto();
+		surveyReportDto.setClaimId("CL1235050");
+		surveyReportDto.setPolicyNo("PL1010231");
+		surveyReportDto.setPartsCost(100);
+		surveyReportDto.setDepreciationCost(10);
+		surveyReportDto.setPolicyClass(50);
+		surveyReportDto.setLabourCharges(50);
+		surveyReportDto.setTotalAmount(160);
 
-    @Test
-     void testGetSurvey() throws SurveyReportNotFoundException {
-        // Given
-        SurveyDto surveyReportDto = new SurveyDto();
-        surveyReportDto.setClaimId("CL1235050");
-        surveyReportDto.setPolicyNo("PL1010231");
-        surveyReportDto.setPartsCost(100);
-        surveyReportDto.setDepreciationCost(10);
-        surveyReportDto.setPolicyClass(50);
-        surveyReportDto.setLabourCharges(50);
-        surveyReportDto.setTotalAmount(160);
+		// When
+		when(surveyReportService.getSurvey("CL1235050")).thenReturn(surveyReportDto);
+		SurveyDto response = surveyController.getSurvey("CL1235050");
 
-        // When
-        when(surveyReportService.getSurvey("CL1235050")).thenReturn(surveyReportDto);
-        SurveyDto response = surveyController.getSurvey("CL1235050");
+		// Then
+		assertEquals(surveyReportDto, response);
+	}
 
-        // Then
-        assertEquals(surveyReportDto, response);
-    }
+	@Test
+	void testUpdateClaim() throws SurveyReportNotFoundException {
+		// Given
+		SurveyDto surveyReportDto = new SurveyDto();
+		surveyReportDto.setClaimId("CL1235050");
+		surveyReportDto.setPolicyNo("PL1010231");
+		surveyReportDto.setPartsCost(100);
+		surveyReportDto.setDepreciationCost(10);
+		surveyReportDto.setPolicyClass(50);
+		surveyReportDto.setLabourCharges(50);
+		surveyReportDto.setTotalAmount(160);
 
-    @Test
-     void testUpdateClaim() throws SurveyReportNotFoundException {
-        // Given
-        SurveyDto surveyReportDto = new SurveyDto();
-        surveyReportDto.setClaimId("CL1235050");
-        surveyReportDto.setPolicyNo("PL1010231");
-        surveyReportDto.setPartsCost(100);
-        surveyReportDto.setDepreciationCost(10);
-        surveyReportDto.setPolicyClass(50);
-        surveyReportDto.setLabourCharges(50);
-        surveyReportDto.setTotalAmount(160);
+		// When
+		when(surveyReportService.updateSurvey("CL1235050", surveyReportDto)).thenReturn(surveyReportDto);
+		ResponseEntity<SurveyDto> response = surveyController.updateClaim("CL1235050", surveyReportDto);
 
-        // When
-        when(surveyReportService.updateSurvey("CL1235050", surveyReportDto)).thenReturn(surveyReportDto);
-        ResponseEntity<SurveyDto> response = surveyController.updateClaim("CL1235050", surveyReportDto);
-
-        // Then
-        assertEquals(surveyReportDto, response.getBody());
-    }
+		// Then
+		assertEquals(surveyReportDto, response.getBody());
+	}
 }

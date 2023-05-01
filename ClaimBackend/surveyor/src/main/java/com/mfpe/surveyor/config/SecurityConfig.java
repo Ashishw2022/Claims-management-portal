@@ -29,59 +29,55 @@ import com.mfpe.surveyor.filter.JwtAuthFilter;
 @EnableMethodSecurity
 public class SecurityConfig {
 
-	 @Autowired
-	    private JwtAuthFilter authFilter;
+	@Autowired
+	private JwtAuthFilter authFilter;
 
-	    @Bean
-	    public UserDetailsService userDetailsService() {
-	        return new UserInfoUserDetailsService();
-	    }
+	@Bean
+	public UserDetailsService userDetailsService() {
+		return new UserInfoUserDetailsService();
+	}
 
-	    @Bean
-	    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-	        return http.csrf().disable()
-	                .authorizeHttpRequests()
-	                .requestMatchers("/new","/authenticate").permitAll()
-	                .and()
-	                .authorizeHttpRequests().requestMatchers("/api/surveyors/new","/api/survey/**")
-	                .authenticated().and()
-	                .sessionManagement()
-	                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-	                .and()
-	                .authenticationProvider(authenticationProvider())
-	                .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
-	                .cors() 
-	                .and()
-	                .build();
-	    }
+	@Bean
+	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+		return http.csrf().disable().authorizeHttpRequests().requestMatchers("/new", "/authenticate")
+				.permitAll().requestMatchers(AUTH_WHTELIST).permitAll().and().authorizeHttpRequests()
+				.requestMatchers("/api/surveyors/new", "/api/survey/**").authenticated().and().sessionManagement()
+				.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+				.authenticationProvider(authenticationProvider())
+				.addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class).cors().and().build();
+	}
 
-	    @Bean
-	    public PasswordEncoder passwordEncoder() {
-	        return new BCryptPasswordEncoder();
-	    }
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
 
-	    @Bean
-	    public AuthenticationProvider authenticationProvider(){
-	        DaoAuthenticationProvider authenticationProvider=new DaoAuthenticationProvider();
-	        authenticationProvider.setUserDetailsService(userDetailsService());
-	        authenticationProvider.setPasswordEncoder(passwordEncoder());
-	        return authenticationProvider;
-	    }
-	    @Bean
-	    public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
-	        return config.getAuthenticationManager();
-	    }
-	    @Bean
-	    public CorsConfigurationSource corsConfigurationSource() {
-	        CorsConfiguration configuration = new CorsConfiguration();
-	        configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
-	        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
-	        configuration.setAllowedHeaders(Arrays.asList("*"));
-	        
+	@Bean
+	public AuthenticationProvider authenticationProvider() {
+		DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
+		authenticationProvider.setUserDetailsService(userDetailsService());
+		authenticationProvider.setPasswordEncoder(passwordEncoder());
+		return authenticationProvider;
+	}
 
-	        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-	        source.registerCorsConfiguration("/**", configuration);
-	        return source;
-	    }
+	@Bean
+	public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
+		return config.getAuthenticationManager();
+	}
+
+	@Bean
+	public CorsConfigurationSource corsConfigurationSource() {
+		CorsConfiguration configuration = new CorsConfiguration();
+		configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
+		configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
+		configuration.setAllowedHeaders(Arrays.asList("*"));
+
+		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+		source.registerCorsConfiguration("/**", configuration);
+		return source;
+	}
+
+	private static final String[] AUTH_WHTELIST = { "/api/v1/auth/**", "/v3/api-docs/**", "/v3/api-docs.yaml",
+			"/swagger-ui/**", "/swagger-ui.html", };
 
 }

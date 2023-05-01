@@ -18,7 +18,7 @@ import com.mfpe.surveyor.repository.UserInfoRepository;
 @Service
 public class SurveyReportServiceImpl implements SurveyReportService {
 	@Autowired
-    private PasswordEncoder passwordEncoder;
+	private PasswordEncoder passwordEncoder;
 	@Autowired
 	private SurveyReportRepository surveyReportRepository;
 	@Autowired
@@ -28,7 +28,6 @@ public class SurveyReportServiceImpl implements SurveyReportService {
 	@Override
 	public SurveyDto addSurvey(SurveyDto surveyDto) {
 		LOGGER.info("Start");
-
 		SurveyReport surveyReport = new SurveyReport();
 		surveyReport.setClaimId(surveyDto.getClaimId());
 		surveyReport.setPolicyNo(surveyDto.getPolicyNo());
@@ -54,11 +53,9 @@ public class SurveyReportServiceImpl implements SurveyReportService {
 	@Override
 	public SurveyDto getSurvey(String claimId) {
 		LOGGER.info("Start");
-
 		SurveyReport surveyReport = surveyReportRepository.findById(claimId)
 				.orElseThrow(() -> new SurveyReportNotFoundException("Survey not found"));
 		LOGGER.info("End");
-
 		return mapToDTO(surveyReport);
 	}
 
@@ -111,9 +108,10 @@ public class SurveyReportServiceImpl implements SurveyReportService {
 		surveyDto.setTotalAmount(surveyReport.getTotalAmount());
 		return surveyDto;
 	}
-	 public String addUser(UserInfo userInfo) {
-	        userInfo.setPassword(passwordEncoder.encode(userInfo.getPassword()));
-	        repo.save(userInfo);
-	        return "user added to system ";
-	    }
+
+	public String addUser(UserInfo userInfo) {
+		userInfo.setPassword(passwordEncoder.encode(userInfo.getPassword()));
+		repo.save(userInfo);
+		return "user added to system ";
+	}
 }

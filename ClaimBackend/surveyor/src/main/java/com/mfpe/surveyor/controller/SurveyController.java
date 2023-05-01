@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mfpe.surveyor.config.UserInfoUserDetails;
 import com.mfpe.surveyor.dto.AuthRequest;
 import com.mfpe.surveyor.dto.SurveyDto;
 import com.mfpe.surveyor.exception.SurveyReportNotFoundException;
@@ -36,22 +35,23 @@ public class SurveyController {
 
 	@Autowired
 	private AuthenticationManager authenticationManager;
-	
-	
-	  @PostMapping("/new")
-	    public String addNewUser(@RequestBody UserInfo userInfo) {
-	        return surveyReportService.addUser(userInfo);
-	    }
-	@PostMapping("/authenticate")
-	    public ResponseEntity<?> authenticateAndGetToken(@RequestBody AuthRequest authRequest) {
-	        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
-	        if (authentication.isAuthenticated()) {
-	        	final String jwt=jwtService.generateToken(authRequest.getUsername());
-	        	return ResponseEntity.ok(new AuthenticationResponse(jwt));
 
-	        } else {
-	            throw new UsernameNotFoundException("invalid user request !");
-	        }
+	@PostMapping("/new")
+	public String addNewUser(@RequestBody UserInfo userInfo) {
+		return surveyReportService.addUser(userInfo);
+	}
+
+	@PostMapping("/authenticate")
+	public ResponseEntity<?> authenticateAndGetToken(@RequestBody AuthRequest authRequest) {
+		Authentication authentication = authenticationManager.authenticate(
+				new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
+		if (authentication.isAuthenticated()) {
+			final String jwt = jwtService.generateToken(authRequest.getUsername());
+			return ResponseEntity.ok(new AuthenticationResponse(jwt));
+
+		} else {
+			throw new UsernameNotFoundException("invalid user request !");
+		}
 	}
 
 	@PostMapping("/api/surveyors/new")
