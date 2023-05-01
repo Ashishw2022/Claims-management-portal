@@ -17,6 +17,7 @@ import { ShowReportsComponent } from './components/show-reports/show-reports.com
 import { HomeComponent } from './components/home/home.component';
 import { UpdateComponent } from './components/update/update.component';
 import { LoginComponent } from './components/login/login.component';
+import { SurveyorNavbarComponent } from './components/surveyor-navbar/surveyor-navbar.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { LoginComponent } from './components/login/login.component';
     HomeComponent,
     UpdateComponent,
     LoginComponent,
+    SurveyorNavbarComponent,
 
   ],
   imports: [

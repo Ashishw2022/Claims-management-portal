@@ -47,6 +47,7 @@ export class AuthService {
   {
       // this.loggedIn=false;
       sessionStorage.setItem("status","not");
+      sessionStorage.clear;
   }
 
   //isLoggedIn method.
