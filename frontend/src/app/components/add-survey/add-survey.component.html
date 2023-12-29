@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>New Survey Report</title>
@@ -19,61 +20,80 @@
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="claim-id">Claim ID:</label>
-                  <!-- <input type="text" class="form-control" id="claim_Id" formControlName="claimId" placeholder="Enter Claim ID" required> -->
-                  <select id="claimId" formControlName="claimId" [(ngModel)]="selectedClaimid" name="claimId" class="form-control" required (change)="onSelectClaimId($event)">
+                  <select id="claimId" formControlName="claimId" [(ngModel)]="selectedClaimid" name="claimId"
+                    class="form-control" required (change)="onSelectClaimId($event)">
                     <option [ngValue]="null" selected disabled>Select a Claim ID </option>
-                    <option  *ngFor="let claimId of options" [value]="claimId.claim_Id">{{ claimId.claim_Id }}</option>
+                    <option *ngFor="let claimId of options" [value]="claimId.claim_Id">{{ claimId.claim_Id }}</option>
                   </select>
-                  <div *ngIf="Surveyorform.controls['claimId']?.invalid && (Surveyorform.controls['claimId']?.dirty || Surveyorform.controls['claimId']?.touched)">
-                    <div *ngIf="Surveyorform.controls['claimId']?.errors?.['required']" class="text-danger">This field is required.</div>
-                    <div *ngIf="Surveyorform.controls['claimId'].errors?.['min']" class="text-danger">This field requires a minimum of 10 characters.</div> 
-                </div>
+                  <div
+                    *ngIf="Surveyorform.controls['claimId']?.invalid && (Surveyorform.controls['claimId']?.dirty || Surveyorform.controls['claimId']?.touched)">
+                    <div *ngIf="Surveyorform.controls['claimId']?.errors?.['required']" class="text-danger">This field
+                      is required.</div>
+                    <div *ngIf="Surveyorform.controls['claimId'].errors?.['min']" class="text-danger">This field
+                      requires a minimum of 10 characters.</div>
+                  </div>
                 </div>
                 <div class="form-group col-md-6">
                   <label for="policy-no">Policy Number:</label>
-                  <input readonly readonly type="text" class="form-control" id="policy_No" formControlName="policyNo"placeholder="Policy Number" required [ngModel]="policyNo">
-                  <div *ngIf="Surveyorform.controls['policyNo']?.invalid && (Surveyorform.controls['policyNo']?.dirty || Surveyorform.controls['policyNo']?.touched)">
-                    <div *ngIf="Surveyorform.controls['policyNo']?.errors?.['required']" class="text-danger">This field is required.</div>
-                    <div *ngIf="Surveyorform.controls['policyNo'].errors?.['min']" class="text-danger">This field requires a minimum of 7 characters.</div> 
-                </div>
+                  <input readonly readonly type="text" class="form-control" id="policy_No" formControlName="policyNo"
+                    placeholder="Policy Number" required [ngModel]="policyNo">
+                  <div
+                    *ngIf="Surveyorform.controls['policyNo']?.invalid && (Surveyorform.controls['policyNo']?.dirty || Surveyorform.controls['policyNo']?.touched)">
+                    <div *ngIf="Surveyorform.controls['policyNo']?.errors?.['required']" class="text-danger">This field
+                      is required.</div>
+                    <div *ngIf="Surveyorform.controls['policyNo'].errors?.['min']" class="text-danger">This field
+                      requires a minimum of 7 characters.</div>
+                  </div>
                 </div>
               </div>
               <div class="form-group">
                 <label for="policy-class">Policy Class:</label>
-                <input type="text" class="form-control" id="policy_Class" formControlName="policyClass" placeholder="Enter Policy Class" required >
-                <div *ngIf="Surveyorform.controls['policyClass']?.invalid && (Surveyorform.controls['policyClass']?.dirty || Surveyorform.controls['policyClass']?.touched)">
-                  <div *ngIf="Surveyorform.controls['policyClass']?.errors?.['required']" class="text-danger">This field is required.</div>
+                <input type="text" class="form-control" id="policy_Class" formControlName="policyClass"
+                  placeholder="Enter Policy Class" required>
+                <div
+                  *ngIf="Surveyorform.controls['policyClass']?.invalid && (Surveyorform.controls['policyClass']?.dirty || Surveyorform.controls['policyClass']?.touched)">
+                  <div *ngIf="Surveyorform.controls['policyClass']?.errors?.['required']" class="text-danger">This field
+                    is required.</div>
                 </div>
               </div>
               <div class="form-group">
                 <label for="parts-cost">Parts Cost:</label>
-                <input type="text" class="form-control" id="parts_Cost"  formControlName="partsCost" placeholder="Enter Parts Cost" required>
-                <div *ngIf="Surveyorform.controls['partsCost']?.invalid && (Surveyorform.controls['partsCost']?.dirty || Surveyorform.controls['partsCost']?.touched)">
-                  <div *ngIf="Surveyorform.controls['partsCost']?.errors?.['required']" class="text-danger">This field is required.</div>
+                <input type="text" class="form-control" id="parts_Cost" formControlName="partsCost"
+                  placeholder="Enter Parts Cost" required>
+                <div
+                  *ngIf="Surveyorform.controls['partsCost']?.invalid && (Surveyorform.controls['partsCost']?.dirty || Surveyorform.controls['partsCost']?.touched)">
+                  <div *ngIf="Surveyorform.controls['partsCost']?.errors?.['required']" class="text-danger">This field
+                    is required.</div>
                 </div>
               </div>
               <div class="form-group">
                 <label for="labour-charges">Labour Charges:</label>
-                <input type="text" class="form-control" id="labour_Charges" formControlName="labourCharges" placeholder="Enter Labour Charges" required>
-                <div *ngIf="Surveyorform.controls['labourCharges']?.invalid && (Surveyorform.controls['labourCharges']?.dirty || Surveyorform.controls['labourCharges']?.touched)">
-                  <div *ngIf="Surveyorform.controls['labourCharges']?.errors?.['required']" class="text-danger">This field is required.</div>
-                  <div *ngIf="Surveyorform.controls['labourCharges']?.errors?.['min']" class="text-danger">Enter positive value.</div>
-                  <div *ngIf="Surveyorform.controls['labourCharges']?.errors?.['LabourChargesValidator']" class="text-danger">Labour charges must be lessthan Parts Cost.</div>
-
+                <input type="text" class="form-control" id="labour_Charges" formControlName="labourCharges"
+                  placeholder="Enter Labour Charges" required>
+                <div
+                  *ngIf="Surveyorform.controls['labourCharges']?.invalid && (Surveyorform.controls['labourCharges']?.dirty || Surveyorform.controls['labourCharges']?.touched)">
+                  <div *ngIf="Surveyorform.controls['labourCharges']?.errors?.['required']" class="text-danger">This
+                    field is required.</div>
+                  <div *ngIf="Surveyorform.controls['labourCharges']?.errors?.['min']" class="text-danger">Enter
+                    positive value.</div>
+                  <div *ngIf="Surveyorform.controls['labourCharges']?.errors?.['LabourChargesValidator']"
+                    class="text-danger">Labour charges must be lessthan Parts Cost.</div>
                 </div>
               </div>
               <div class="form-group">
                 <label for="depreciation">Depreciation Cost:</label>
-                <input type="text" class="form-control" id="depreciation_Cost" formControlName="depreciationCost" placeholder="Enter Depreciation Cost" required>
-                <div *ngIf="Surveyorform.controls['depreciationCost']?.invalid && (Surveyorform.controls['depreciationCost']?.dirty || Surveyorform.controls['depreciationCost']?.touched)">
-                  <div *ngIf="Surveyorform.controls['depreciationCost']?.errors?.['required']" class="text-danger">This field is required.</div>
+                <input type="text" class="form-control" id="depreciation_Cost" formControlName="depreciationCost"
+                  placeholder="Enter Depreciation Cost" required>
+                <div
+                  *ngIf="Surveyorform.controls['depreciationCost']?.invalid && (Surveyorform.controls['depreciationCost']?.dirty || Surveyorform.controls['depreciationCost']?.touched)">
+                  <div *ngIf="Surveyorform.controls['depreciationCost']?.errors?.['required']" class="text-danger">This
+                    field is required.</div>
                 </div>
               </div>
               <div class="text-center mt-3 form-group">
-                <input [disabled]="!Surveyorform.valid" class="btn btn-primary w-100" type="submit" value="Generate Survey Report">
-            
+                <input [disabled]="!Surveyorform.valid" class="btn btn-primary w-100" type="submit"
+                  value="Generate Survey Report">
               </div>
-            
             </form>
           </div>
         </div>

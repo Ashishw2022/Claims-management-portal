@@ -1,108 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>New Survey Report</title>
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    
-  </head>
-  <body>
-    <app-surveyor-navbar></app-surveyor-navbar>
 
-    <div class="container">
-      <div class="search-box">
-        <input
-          type="text"
-          class="form-control search-input"
-          placeholder="Search with claim id..."
-          [(ngModel)]="claimId"
-        />
-        <button
-          class="btn btn-primary search-button"
-          (click)="fetchSurveyReport()"
-        >
-          <i class="fa fa-search"></i>
-        </button>
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <title>New Survey Report</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+<body>
+  <app-surveyor-navbar></app-surveyor-navbar>
+  <div class="container">
+    <div class="search-box">
+      <input type="text" class="form-control search-input" placeholder="Search with claim id..."
+        [(ngModel)]="claimId" />
+      <button class="btn btn-primary search-button" (click)="fetchSurveyReport()">
+        <i class="fa fa-search"></i>
+      </button>
     </div>
-    <div class="container" *ngIf="surveyReport">
-      <div class="row justify-content-center">
-        <div class="col-md-8 col-lg-6">
-          <div class="card">
-            <div class="card-header">
-              <h3 class="text-center">Update Report</h3>
-            </div>
-            <div class="card-body bodypart">
-              <form [formGroup]="Surveyorform" (ngSubmit)="update()">
-                <div class="form-row">
-                  <div class="form-group col-md-6">
-                    <label for="claim-id">Claim ID :</label>
-                    <input type="text" class="form-control" id="claimId" formControlName="claimId" [ngModel]="surveyReport.claimId" required readonly>
-                    <div *ngIf="Surveyorform.controls['claimId']?.invalid && (Surveyorform.controls['claimId']?.dirty || Surveyorform.controls['claimId']?.touched)">
-                      <div *ngIf="Surveyorform.controls['claimId']?.errors?.['required']" class="text-danger">This field is required.</div>
-                    </div>
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label for="policy-no">Policy Number :</label>
-                    <input type="text" class="form-control" id="policyNo" formControlName="policyNo" [ngModel]="surveyReport.policyNo" required readonly>
-                    <div *ngIf="Surveyorform.controls['policyNo']?.invalid && (Surveyorform.controls['policyNo']?.dirty || Surveyorform.controls['policyNo']?.touched)">
-                      <div *ngIf="Surveyorform.controls['policyNo']?.errors?.['required']" class="text-danger">This field is required.</div>
-                    </div>
+  </div>
+  <div class="container" *ngIf="surveyReport">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="text-center">Update Report</h3>
+          </div>
+          <div class="card-body bodypart">
+            <form [formGroup]="Surveyorform" (ngSubmit)="update()">
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="claim-id">Claim ID :</label>
+                  <input type="text" class="form-control" id="claimId" formControlName="claimId"
+                    [ngModel]="surveyReport.claimId" required readonly>
+                  <div
+                    *ngIf="Surveyorform.controls['claimId']?.invalid && (Surveyorform.controls['claimId']?.dirty || Surveyorform.controls['claimId']?.touched)">
+                    <div *ngIf="Surveyorform.controls['claimId']?.errors?.['required']" class="text-danger">This field
+                      is required.</div>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label for="policy-class">Policy Class :</label>
-                  <input type="text" class="form-control" id="policyClass" formControlName="policyClass" [ngModel]="surveyReport.policyClass" required>
-                  <div *ngIf="Surveyorform.controls['policyClass']?.invalid && (Surveyorform.controls['policyClass']?.dirty || Surveyorform.controls['policyClass']?.touched)">
-                    <div *ngIf="Surveyorform.controls['policyClass']?.errors?.['required']" class="text-danger">This field is required.</div>
+                <div class="form-group col-md-6">
+                  <label for="policy-no">Policy Number :</label>
+                  <input type="text" class="form-control" id="policyNo" formControlName="policyNo"
+                    [ngModel]="surveyReport.policyNo" required readonly>
+                  <div
+                    *ngIf="Surveyorform.controls['policyNo']?.invalid && (Surveyorform.controls['policyNo']?.dirty || Surveyorform.controls['policyNo']?.touched)">
+                    <div *ngIf="Surveyorform.controls['policyNo']?.errors?.['required']" class="text-danger">This field
+                      is required.</div>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label for="parts-cost">Parts Cost :</label>
-                  <input type="text" class="form-control" id="partsCost"  formControlName="partsCost" [ngModel]="surveyReport.partsCost" required>
-                  <div *ngIf="Surveyorform.controls['partsCost']?.invalid && (Surveyorform.controls['partsCost']?.dirty || Surveyorform.controls['partsCost']?.touched)">
-                    <div *ngIf="Surveyorform.controls['partsCost']?.errors?.['required']" class="text-danger">This field is required.</div>
-                  </div>
+              </div>
+              <div class="form-group">
+                <label for="policy-class">Policy Class :</label>
+                <input type="text" class="form-control" id="policyClass" formControlName="policyClass"
+                  [ngModel]="surveyReport.policyClass" required>
+                <div
+                  *ngIf="Surveyorform.controls['policyClass']?.invalid && (Surveyorform.controls['policyClass']?.dirty || Surveyorform.controls['policyClass']?.touched)">
+                  <div *ngIf="Surveyorform.controls['policyClass']?.errors?.['required']" class="text-danger">This field
+                    is required.</div>
                 </div>
-                <div class="form-group">
-                  <label for="labour-charges">Labour Charges :</label>
-                  <input type="text" class="form-control" id="labourCharges" formControlName="labourCharges" [ngModel]="surveyReport.labourCharges" required>
-                  <div *ngIf="Surveyorform.controls['labourCharges']?.invalid && (Surveyorform.controls['labourCharges']?.dirty || Surveyorform.controls['labourCharges']?.touched)">
-                    <div *ngIf="Surveyorform.controls['labourCharges']?.errors?.['required']" class="text-danger">This field is required.</div>
-                  </div>
+              </div>
+              <div class="form-group">
+                <label for="parts-cost">Parts Cost :</label>
+                <input type="text" class="form-control" id="partsCost" formControlName="partsCost"
+                  [ngModel]="surveyReport.partsCost" required>
+                <div
+                  *ngIf="Surveyorform.controls['partsCost']?.invalid && (Surveyorform.controls['partsCost']?.dirty || Surveyorform.controls['partsCost']?.touched)">
+                  <div *ngIf="Surveyorform.controls['partsCost']?.errors?.['required']" class="text-danger">This field
+                    is required.</div>
                 </div>
-                <div class="form-group">
-                  <label for="depreciation">Depreciation Cost :</label>
-                  <input type="text" class="form-control" id="depreciationCost" formControlName="depreciationCost" [ngModel]="surveyReport.depreciationCost" required>
-                  <div *ngIf="Surveyorform.controls['depreciationCost']?.invalid && (Surveyorform.controls['depreciationCost']?.dirty || Surveyorform.controls['depreciationCost']?.touched)">
-                    <div *ngIf="Surveyorform.controls['depreciationCost']?.errors?.['required']" class="text-danger">This field is required.</div>
-                  </div>
+              </div>
+              <div class="form-group">
+                <label for="labour-charges">Labour Charges :</label>
+                <input type="text" class="form-control" id="labourCharges" formControlName="labourCharges"
+                  [ngModel]="surveyReport.labourCharges" required>
+                <div
+                  *ngIf="Surveyorform.controls['labourCharges']?.invalid && (Surveyorform.controls['labourCharges']?.dirty || Surveyorform.controls['labourCharges']?.touched)">
+                  <div *ngIf="Surveyorform.controls['labourCharges']?.errors?.['required']" class="text-danger">This
+                    field is required.</div>
                 </div>
-                <div class="form-group">
-                  <label for="depreciation">Total Amount :</label>
-                  <input type="text" class="form-control" id="totalamount" formControlName="totalAmount" [ngModel]="surveyReport.totalAmount"  readonly required>
-                  <div *ngIf="Surveyorform.controls['totalAmount']?.invalid && (Surveyorform.controls['totalAmount']?.dirty || Surveyorform.controls['totalAmount']?.touched)">
-                    <div *ngIf="Surveyorform.controls['totalAmount']?.errors?.['required']" class="text-danger">This field is required.</div>
-                  </div>
+              </div>
+              <div class="form-group">
+                <label for="depreciation">Depreciation Cost :</label>
+                <input type="text" class="form-control" id="depreciationCost" formControlName="depreciationCost"
+                  [ngModel]="surveyReport.depreciationCost" required>
+                <div
+                  *ngIf="Surveyorform.controls['depreciationCost']?.invalid && (Surveyorform.controls['depreciationCost']?.dirty || Surveyorform.controls['depreciationCost']?.touched)">
+                  <div *ngIf="Surveyorform.controls['depreciationCost']?.errors?.['required']" class="text-danger">This
+                    field is required.</div>
                 </div>
-                <div class="text-center mt-3 form-group">
-                  <input [disabled]="!Surveyorform.valid" class="btn btn-primary w-100" type="submit" value="Update Survey Report">
+              </div>
+              <div class="form-group">
+                <label for="depreciation">Total Amount :</label>
+                <input type="text" class="form-control" id="totalamount" formControlName="totalAmount"
+                  [ngModel]="surveyReport.totalAmount" readonly required>
+                <div
+                  *ngIf="Surveyorform.controls['totalAmount']?.invalid && (Surveyorform.controls['totalAmount']?.dirty || Surveyorform.controls['totalAmount']?.touched)">
+                  <div *ngIf="Surveyorform.controls['totalAmount']?.errors?.['required']" class="text-danger">This field
+                    is required.</div>
                 </div>
-              </form>
-            </div>
+              </div>
+              <div class="text-center mt-3 form-group">
+                <input [disabled]="!Surveyorform.valid" class="btn btn-primary w-100" type="submit"
+                  value="Update Survey Report">
+              </div>
+            </form>
           </div>
         </div>
       </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  </body>
-  </html>
-  
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

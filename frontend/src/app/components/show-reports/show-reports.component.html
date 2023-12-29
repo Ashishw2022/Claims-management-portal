@@ -1,128 +1,93 @@
 <app-navbar></app-navbar>
 <div class="container">
-
-    <div class="heading">
-      <h2 class="heading--highlight highlight">STATUS DISPLAY PORTAL
-      </h2>
-    </div>
-    <br><br>
-    <form (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm" class="first">
-      <div>
-        <h3 class="heading--highlight highlight">STATUS OF CLAIMS
-        </h3>
-        <table class="table">
-  
-          <label for="year">Year</label>
-          <input type="text" class="form-control" placeholder="Enter Year" name="year" ngModel required #year="ngModel" />
-          <span *ngIf="f.submitted && year.errors?.['required']" style="color: red">Please enter Year</span><br><br>
-          <label for="mon">Month</label>
-          <select class="form-control" name="mon" ngModel required #mon="ngModel">
-            <option *ngFor="let months of allItems" [ngValue]="months.mont">
-              {{months.mont}}
-            </option>
-          </select>
-          <span *ngIf="f.submitted && mon.errors?.['required']" style="color: red">Please select a Month</span><br>
-  
-  
-  
-  
-  
-  
-          <!-- <label *ngIf="singleClaim.amountApprovedBySurveyor == '0'">Surveyor needs to allocate Amount first</label> -->
-  
-          <button  type="submit" class="btn btn-primary w-100">
-            Display Status
-            &rarr;
-          </button>
-  
-  
-        </table>
-      </div>
-  
-  
-  
-    </form>
-    <form (ngSubmit)="ff.form.valid && onSubmit2(ff)" #ff="ngForm" class="second">
-      <div>
-        <h3 class="heading--highlight highlight">CLAIM PAYMENT
-        </h3>
-        <table class="table">
-  
-          <label for="yea">Year</label>
-          <input type="text" class="form-control" placeholder="Enter Year" name="yea" ngModel required #yea="ngModel" />
-          <span *ngIf="ff.submitted && yea.errors?.['required']" style="color: red">Please enter Year</span><br><br>
-          <label for="mont">Month</label>
-          <select class="form-control" name="mont" ngModel required #mont="ngModel">
-            <option *ngFor="let months of allItems" [ngValue]="months.mont">
-              {{months.mont}}
-            </option>
-          </select>
-          <span *ngIf="ff.submitted && mont.errors?.['required']" style="color: red">Please select a Month</span><br>
-  
-  
-  
-  
-  
-  
-          <!-- <label *ngIf="singleClaim.amountApprovedBySurveyor == '0'">Surveyor needs to allocate Amount first</label> -->
-  
-          <button  type="submit" class="btn btn-primary w-100">
-            Display Status
-            &rarr;
-          </button>
-  
-  
-        </table>
-      </div>
-  
-  
-  
-    </form>
-  
-  
+  <div class="heading">
+    <h2 class="heading--highlight highlight">STATUS DISPLAY PORTAL
+    </h2>
   </div>
-  
-  <br>
-  <br>
-  
-  
-  <table class="table table-dark table-bordered table-striped" style="margin-left: auto;margin-right: auto;" *ngIf="showTable">
-    <thead>
-      <tr>
-        <th colspan = "3" style="text-align: center;">CLAIM STATUS REPORT</th>
-      </tr>
-      <tr>
-        <th scope="col" style="text-align: center;">Finalized Claims</th>
-        <th scope="col" style="text-align: center;">New Claims</th>
-        <th scope="col" style="text-align: center;">Pending Claims</th>
-      </tr>
-    </thead>
-    <tbody *ngFor="let claim of claimReport">
-      <tr>
-        <td style="text-align: center;">{{claim.Finalized_claims}}</td>
-        <td style="text-align: center;">{{claim.New_claims}}</td>
-        <td style="text-align: center;">{{claim.Pending_claims}}</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  
-  <table class="table table-dark table-bordered table-striped" style="margin-left: auto;margin-right: auto;" *ngIf="showTable2">
-    <thead>
-      <tr>
-        <th colspan = "2" style="text-align: center;">PAYMENT STATUS REPORT</th>
-      </tr>
-      <tr>
-        <th scope="col" style="text-align: center;">Month</th>
-        <th scope="col" style="text-align: center;">Amount</th>
-      </tr>
-    </thead>
-    <tbody *ngFor="let payment of paymentReport">
-      <tr>
-        <td style="text-align: center;">{{payment[0]}}</td>
-        <td style="text-align: center;">{{payment[1]}}</td>
-  
-      </tr>
-    </tbody>
-  </table>
+  <br><br>
+  <form (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm" class="first">
+    <div>
+      <h3 class="heading--highlight highlight">STATUS OF CLAIMS
+      </h3>
+      <table class="table">
+        <label for="year">Year</label>
+        <input type="text" class="form-control" placeholder="Enter Year" name="year" ngModel required #year="ngModel" />
+        <span *ngIf="f.submitted && year.errors?.['required']" style="color: red">Please enter Year</span><br><br>
+        <label for="mon">Month</label>
+        <select class="form-control" name="mon" ngModel required #mon="ngModel">
+          <option *ngFor="let months of allItems" [ngValue]="months.mont">
+            {{months.mont}}
+          </option>
+        </select>
+        <span *ngIf="f.submitted && mon.errors?.['required']" style="color: red">Please select a Month</span><br>
+        <button type="submit" class="btn btn-primary w-100">
+          Display Status
+          &rarr;
+        </button>
+      </table>
+    </div>
+  </form>
+  <form (ngSubmit)="ff.form.valid && onSubmit2(ff)" #ff="ngForm" class="second">
+    <div>
+      <h3 class="heading--highlight highlight">CLAIM PAYMENT
+      </h3>
+      <table class="table">
+
+        <label for="yea">Year</label>
+        <input type="text" class="form-control" placeholder="Enter Year" name="yea" ngModel required #yea="ngModel" />
+        <span *ngIf="ff.submitted && yea.errors?.['required']" style="color: red">Please enter Year</span><br><br>
+        <label for="mont">Month</label>
+        <select class="form-control" name="mont" ngModel required #mont="ngModel">
+          <option *ngFor="let months of allItems" [ngValue]="months.mont">
+            {{months.mont}}
+          </option>
+        </select>
+        <span *ngIf="ff.submitted && mont.errors?.['required']" style="color: red">Please select a Month</span><br>
+        <button type="submit" class="btn btn-primary w-100">
+          Display Status
+          &rarr;
+        </button>
+      </table>
+    </div>
+  </form>
+</div>
+<br>
+<br>
+<table class="table table-dark table-bordered table-striped" style="margin-left: auto;margin-right: auto;"
+  *ngIf="showTable">
+  <thead>
+    <tr>
+      <th colspan="3" style="text-align: center;">CLAIM STATUS REPORT</th>
+    </tr>
+    <tr>
+      <th scope="col" style="text-align: center;">Finalized Claims</th>
+      <th scope="col" style="text-align: center;">New Claims</th>
+      <th scope="col" style="text-align: center;">Pending Claims</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let claim of claimReport">
+    <tr>
+      <td style="text-align: center;">{{claim.Finalized_claims}}</td>
+      <td style="text-align: center;">{{claim.New_claims}}</td>
+      <td style="text-align: center;">{{claim.Pending_claims}}</td>
+    </tr>
+  </tbody>
+</table>
+<table class="table table-dark table-bordered table-striped" style="margin-left: auto;margin-right: auto;"
+  *ngIf="showTable2">
+  <thead>
+    <tr>
+      <th colspan="2" style="text-align: center;">PAYMENT STATUS REPORT</th>
+    </tr>
+    <tr>
+      <th scope="col" style="text-align: center;">Month</th>
+      <th scope="col" style="text-align: center;">Amount</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let payment of paymentReport">
+    <tr>
+      <td style="text-align: center;">{{payment[0]}}</td>
+      <td style="text-align: center;">{{payment[1]}}</td>
+    </tr>
+  </tbody>
+</table>

@@ -12,10 +12,6 @@
     <div class="mt-5">
         <h1 class="text-center">View Claim Details</h1>
         <div class="container">
-            <!--Add Claim Button-->
-            <!-- <div class="my-3">
-                <a href="/add"><button type="button" class="btn btn-primary">Add Claim Details</button></a>
-            </div> -->
             <table class="table border" >
                 <thead>
                   <tr>
@@ -30,7 +26,6 @@
                     <th scope="col">Approval</th>
                     <th scope="col">Withdraw </th>
                     <th scope="col">Action</th>
-                    
                   </tr>
                 </thead>
                 <tbody> 
@@ -40,7 +35,7 @@
                     <td>{{claim.claim_Status}}</td>
                     <td>{{claim.estimated_Loss}}</td>
                     <td>{{claim.policy_No}}</td>
-                    <td>{{claim.date_Of_Accident}}</td>
+                    <td>{{ claim.date_Of_Accident | date:'MM-dd-yyyy' }}</td>
                     <td>{{claim.surveyor_Fees}}</td>
                     <td>{{claim.surveyor_Id}}</td>
                     <td>{{claim.insurance_Company_Approval}}</td>
@@ -49,9 +44,6 @@
                       <div class="d-inline mx-2">
                         <button class="btn btn-warning"  (click)="updateClaim(claim.claim_Id)" type="button">Update</button>
                     </div>
-                    <!-- <div class="d-inline">
-                      <button class="btn btn-danger"  type="button">Delete</button>
-                    </div> -->
                   </td>
                   </tr>
                 </tbody>
@@ -60,5 +52,4 @@
     </div>
 </body>
 </html>
-
 <router-outlet></router-outlet>

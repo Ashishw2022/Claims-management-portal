@@ -29,14 +29,6 @@ public class IrdaMicroserviceApplication {
 		SpringApplication.run(IrdaMicroserviceApplication.class, args);
 		LOGGER.info("Inside main");
 	}
-	@Bean
-	public WebMvcConfigurer corsConfigurer() {
-		return new WebMvcConfigurer() {
-			@Override
-			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/api/v1/irda/**").allowedOrigins("http://localhost:4200");
-			}
-		};
-	}
+	
 
 }

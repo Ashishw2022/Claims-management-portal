@@ -98,38 +98,6 @@ allClaims():Observable<any[]> {
   return this.http.get<any[]>(`${this.url}api/claims`)
 }
 
-// getClaimById(inputFields: { claimID: any }) {
-//   console.log("Inside get by claim id")
-//   return this.http
-//     .get<UpdateClaim>(
-//       environment.CLAIM_SERVICE_URL+'/'+inputFields.claimID
-//     )
-//     .pipe(
-//       catchError(this.handleError),
-//       tap((response) => {
-//         this.updateClaim = response;
-//         console.log("111");
-//         console.log(this.updateClaim);
-//         console.log("111");
-//       })
-//     );
-// }
-// submitClaim(surveyor:any,claimStatus:any,claimId:any) {
-//   console.log("''''''''''''''''''''''''''''''''''''''")
-//   console.log(claimStatus,surveyor,claimId);
-//   return this.http
-//     .put<UpdateClaim>(
-//       environment.CLAIM_SERVICE_URL+'/'+claimId+'/update',{claimStatus,surveyor}
-//               )
-//     .pipe(
-//       catchError(this.handleError),
-//       tap((response) => {
-//         this.data = response;
-//       })
-//       );
-// }
-
-
 withdrawClaim(claim_Id:any) {
   console.log("''''''''''''''''''''''''''''''''''''''")
   return this.http

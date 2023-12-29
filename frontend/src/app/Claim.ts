@@ -1,5 +1,4 @@
 export interface Claim{
-
     claim_Id: string
     policy_No: string
     estimated_Loss: number

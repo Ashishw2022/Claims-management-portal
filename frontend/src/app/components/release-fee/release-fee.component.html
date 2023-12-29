@@ -1,43 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Release Fee</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Release Fee</title>
 </head>
 <body>
   <app-navbar></app-navbar>
-    <div class="my-5">
-      <div class="mx-auto w-25 " style="max-width:100%;">
-        <h2 class="text-center mb-3">Release Fee </h2>
-        <form  [formGroup]="form" (ngSubmit)="submit()" >
-
-              
-
-          <div class="row">
-            <div class="col-md-12 form-group mb-3">
-              <label for="fee_Id" class="form-label">Claim ID</label>
-              <input id="fee_Id" type="text" name="fee_Id" formControlName="fee_Id" class="form-control" placeholder="Enter Serveyor ID" minlength="10" maxlength="10" required>
-              
-
-              
-            </div>
-          </div> 
-         
-          <div class="row">
-            <div class="col-md-12 form-group">
-              <button [disabled]="!form.valid" class="btn btn-primary w-100" type="submit" value="Submit">Approve</button>
-            </div>
+  <div class="my-5">
+    <div class="mx-auto w-25 " style="max-width:100%;">
+      <h2 class="text-center mb-3">Release Fee </h2>
+      <form [formGroup]="form" (ngSubmit)="submit()">
+        <div class="row">
+          <div class="col-md-12 form-group mb-3">
+            <label for="fee_Id" class="form-label">Claim ID</label>
+            <input id="fee_Id" type="text" name="fee_Id" formControlName="fee_Id" class="form-control"
+              placeholder="Enter Serveyor ID" minlength="10" maxlength="10" required>
           </div>
-
-          <div>
-            
+        </div>
+        <div class="row">
+          <div class="col-md-12 form-group">
+            <button [disabled]="!form.valid" class="btn btn-primary w-100" type="submit" value="Submit">Approve</button>
           </div>
-        </form>
-  
-      </div>
+        </div>
+        <div>
+        </div>
+      </form>
     </div>
-    
+  </div>
 </body>
 </html>

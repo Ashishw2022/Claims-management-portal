@@ -11,9 +11,7 @@
     <div class="my-5">
       <div class="mx-auto w-25 " style="max-width:100%;">
         <h2 class="text-center mb-3">Update claim</h2>
-        <form  [formGroup]="form" (ngSubmit)="submit()" >
-
-              
+        <form  [formGroup]="form" (ngSubmit)="submit()" >   
           <div class="row">
             <div class="col-md-12 form-group mb-3">
               <label for="cateogry" class="form-label">Claim status</label>
@@ -23,7 +21,6 @@
               </select>
             </div>
           </div>
-
           <div class="row">
             <div class="col-md-12 form-group mb-3">
               <label for="surveyor_Id" class="form-label">Surveyor ID</label>
@@ -33,8 +30,6 @@
               </div>
             </div>
           </div> 
-
-
           <div class="row">
             <div class="col-md-12 form-group mb-3">
               <label for="cateogry" class="form-label">Approve Funds</label>
@@ -44,21 +39,15 @@
               </select>
             </div>
           </div>
-      
-         
           <div class="row">
             <div class="col-md-12 form-group">
               <button [disabled]="!form.valid" class="btn btn-primary w-100" type="submit" value="Submit">Update</button>
             </div>
           </div>
-
           <div>
-            
           </div>
         </form>
-  
       </div>
     </div>
-    
 </body>
 </html>

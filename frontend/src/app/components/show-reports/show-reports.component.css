@@ -10,13 +10,7 @@ button {
     text-align: center;
     font-weight: 600;
   }
-  
-  /* .container { */
-    /* margin-top: 5vh;
-    height: auto;
-    width: 30vw; */
-  /* } */
-  
+
   .row {
     display: flex;
     justify-content: center;
@@ -31,11 +25,7 @@ button {
     border-radius: 8%;
     width: 100%;
   }
-  
-  /* .btn {
-    padding: 12.5px 35px;
-    border-radius: 100px;
-  } */
+
   .first{
     float: left;
     margin-left: 200px;
